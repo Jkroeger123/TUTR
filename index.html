@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tutor Match | Connecting Students and Tutors</title>
+</head>
+<body>
+    <h1>Tutor Match</h1>
+    <button type = "button" onclick="openLogin()">Login</button>
+    <button type = "button" onclick="openRegister()">Register</button>
+
+    <div class="form-popup" id="myForm">
+        <form action="/user/login" class="form-container" method = "POST">
+          <h1>Login</h1>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" id ="email" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" id ="pass" required>
+      
+          <button type="submit" class="btn">Login</button>
+          <button type="button" class="btn cancel" onclick="closeLogin()">Close</button>
+        </form>
+      </div>
+
+      <div class = "reg" id="reg">
+        <h1>Register</h1>
+        <h2>Are you a tutor or a student?</h2>
+        <button type = "button" onclick="openTutor()">Tutor</button>
+        <button type = "button" onclick="openTutee()">Student</button>
+      </div>
+
+      <div class="form-popup2" id="myForm2">
+        <form action="/user/tutor/register" class="form-container" method = "POST">
+          <h1>Register as a Tutor</h1>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" id="pass" required>
+
+          <label for="firstName"><b>First Name</b></label>
+          <input type="text" placeholder="Enter First Name" name="firstName" id="firstName" required>
+
+          <label for="lastName"><b>Last Name</b></label>
+          <input type="text" placeholder="Enter Last Name" name="lastName" id="lastName" required>
+
+          <label for="address"><b>Address</b></label>
+          <input type="text" placeholder="Enter your address" name="address" id="address" required>
+
+          <div id = "subjects">
+            <h3>Select the subjects you tutor in.</h3>
+            <input type="checkbox" name="subjects" value="Math" id="subjects">
+            <label for="subjects">Math</label>
+            <input type="checkbox" name="subjects" value="English" id="subjects">
+            <label for="subjects">English</label>
+            <input type="checkbox" name="subjects" value="Science" id="subjects">
+            <label for="subjects">Science</label>
+          </div>
+
+          <button type="submit" class="btn">Register</button>
+          <button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
+        </form>
+      </div>
+
+      <div class="form-popup3" id="myForm3">
+        <form action="/user/tutee/register" class="form-container" method = "POST">
+          <h1>Register as a Student</h1>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" id="pass" required>
+
+          <label for="firstName"><b>First Name</b></label>
+          <input type="text" placeholder="Enter First Name" name="firstName" id="firstName" required>
+
+          <label for="lastName"><b>Last Name</b></label>
+          <input type="text" placeholder="Enter Last Name" name="lastName" id="lastName" required>
+
+          <label for="address"><b>Address</b></label>
+          <input type="text" placeholder="Enter your address" name="address" id="address" required>
+      
+          <div id = "subjects">
+            <h3>Select the subjects you would like help in.</h3>
+            <input type="checkbox" name="subjects" value="Math" id="subjects">
+            <label for="subjects">Math</label>
+            <input type="checkbox" name="subjects" value="English" id="subjects">
+            <label for="subjects">English</label>
+            <input type="checkbox" name="subjects" value="Science" id="subjects">
+            <label for="subjects">Science</label>
+          </div>
+
+          <button type="submit" class="btn">Register</button>
+          <button type="button" class="btn cancel" onclick="closeRegister()">Close</button>
+        </form>
+      </div>
+
+    <script>
+        function openLogin() {
+          document.getElementById("myForm").style.display = "block";
+        }
+        
+        function closeLogin() {
+          document.getElementById("myForm").style.display = "none";
+        }
+
+        function openRegister() {
+          var tutor = document.getElementById("myForm2");
+          var tutee = document.getElementById("myForm3");
+          if (window.getComputedStyle(tutor).display === "none"&&window.getComputedStyle(tutee).display === "none") {
+            document.getElementById("reg").style.display = "block";
+          }
+        }
+
+        function openTutor(){
+          document.getElementById("reg").style.display = "none";
+          document.getElementById("myForm2").style.display = "block";
+        }
+
+        function openTutee(){
+          document.getElementById("reg").style.display = "none";
+          document.getElementById("myForm3").style.display = "block";
+        }
+        
+        function closeRegister() {
+          document.getElementById("myForm2").style.display = "none";
+          document.getElementById("myForm3").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
