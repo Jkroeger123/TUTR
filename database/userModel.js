@@ -1,5 +1,3 @@
-//TODO: decide how the schema should be defined.
-//Should the tutor/tutee be referenced in a user model, or should the tutor and tutee have there own logins.
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
