@@ -10,7 +10,7 @@ const session = require('express-session');
 
 mongoose.set('useCreateIndex', true) //this is just to remove a deprecation warning
 
-mongoose.connect("mongodb+srv://jkroeger:hello@cluster0-1uuit.mongodb.net/test?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser : true})
+mongoose.connect(process.env.MONGO_URL , { useUnifiedTopology: true, useNewUrlParser : true})
     .then(() => console.log('DB connected...'))
     .catch(err => console.log('DB connection error...'));
 
@@ -21,7 +21,7 @@ app.use(bodyParser.json());//incoming data to json format
 
 app.use(express.static(__dirname));
 
-app.use(session({secret:"123", resave:false, saveUninitialized:true}))
+app.use(session({secret:process.env.SECRET, resave:false, saveUninitialized:true}))
 
 app.use('/user', userRoutes());
 
